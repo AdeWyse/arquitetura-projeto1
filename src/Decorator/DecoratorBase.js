@@ -1,10 +1,10 @@
+  //Componente e ComponenteConcreto foi exluido devido a simplicidade do projeto comforme discutido com o professor.
 export default class DecoratorBase {
-  constructor(comp, cities) {
-    this.wrap = comp;
-    this.htmlRetornar = ``;
-    this.cities = cities;
+  constructor(cities) {
+    this.htmlRetornar = ``;//  string para estrutura html
+    this.cities = cities;// array de cidades para listar
   }
-
+  //Define o inicio da estrutura html
   executar() {
     this.htmlRetornar = `
     <!DOCTYPE HTML>
@@ -18,7 +18,7 @@ export default class DecoratorBase {
         <ul>
     `;
   }
-
+  //Define o fim da estrutura html
   end(){
     this.htmlRetornar += `
           </ul>

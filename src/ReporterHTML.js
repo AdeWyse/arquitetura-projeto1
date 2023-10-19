@@ -10,18 +10,21 @@ export default class ReporterHTML extends AbstractFormater {
   }
 
   output (cities) {
-    const component = new ComponenteConcreto(); 
-    
-    const decoratorDiv = new DecoratorHtmlDiv(component, cities); 
-      
-    //const decoratorP = new DecoratorHtmlP(component, cities); 
-    //decoratorP.executar(); 
-    //decoratorP.extra();
-    //let htmlP = decoratorP.end();
 
-    decoratorDiv.executar(); 
-    decoratorDiv.extra();
-    let htmlDiv = decoratorDiv.end();
+    const component = new ComponenteConcreto(); //Componente para inicializar o decorator
+   
+
+    //Código que faz a lista na versão com divs
+    const decoratorDiv = new DecoratorHtmlDiv(component, cities); //Inicializa o  decorator versão div
+    decoratorDiv.executar(); //Executa o básico do decorator
+    decoratorDiv.extra(); //Executa o o especifico do decorator
+    let htmlDiv = decoratorDiv.end(); // executa a finalização 
+
+     //Código comentado que faz a lista na versão com paragrafos
+    //const decoratorP = new DecoratorHtmlP(component, cities); /Inicializa o  decorator versão div
+    //decoratorP.executar(); //Executa o básico do decorator
+    //decoratorP.extra(); //Executa o o especifico do decorator
+    //let htmlP = decoratorP.end(); //Executa o o especifico do decoratorexecuta a finalização e retorna
 
       return htmlDiv;
   }
