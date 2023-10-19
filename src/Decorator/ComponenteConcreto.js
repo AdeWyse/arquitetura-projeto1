@@ -1,4 +1,4 @@
-class ComponenteConcreto {
+export default class ComponenteConcreto {
   executar() {
   }
 }

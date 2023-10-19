@@ -1,15 +1,28 @@
-class DecoratorBase {
-  constructor(comp) {
+export default class DecoratorBase {
+  constructor(comp, cities) {
     this.wrap = comp;
-    this.reporterHTML = null; // Initialize reporterHTML as needed
+    this.htmlRetornar = ``;
+    this.cities = cities;
   }
 
   executar() {
-    
+    this.htmlRetornar = `
+    <!DOCTYPE HTML>
+    <html>
+      <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Relatório de Nomes de Cidades</title>
+      </head>
+      <body>
+        <h1>Relatório de Nomes de Cidades</h1>
+        <ul>
+    `;
+  }
+
+  end(){
+    this.htmlRetornar += `
+          </ul>
+        </body>
+      </html>`;
   }
 }
-
-// Usage:
-const component = new ComponenteConcreto(); // Create an instance of ComponenteConcreto
-const decorator = new DecoratorBase(component); // Create an instance of DecoratorBase with the ComponenteConcreto instance
-decorator.executar(); // Call the executar method on the decorator

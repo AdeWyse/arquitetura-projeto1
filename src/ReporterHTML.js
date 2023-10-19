@@ -1,4 +1,7 @@
 import AbstractFormater from './AbstractFormater.js';
+import DecoratorHtmlP from './Decorator/DecoratorHtmlP.js';
+import DecoratorHtmlDiv from './Decorator/DecoratorHtmlDiv.js';
+import ComponenteConcreto from './Decorator/ComponenteConcreto.js';
 
 export default class ReporterHTML extends AbstractFormater {
 
@@ -7,28 +10,20 @@ export default class ReporterHTML extends AbstractFormater {
   }
 
   output (cities) {
-    let html = `
-  <!DOCTYPE HTML>
-  <html>
-    <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-      <title>Relatório de Nomes de Cidades</title>
-    </head>
-    <body>
-      <h1>Relatório de Nomes de Cidades</h1>
-      <ul>
-  `;
+    const component = new ComponenteConcreto(); 
+    
+    const decoratorDiv = new DecoratorHtmlDiv(component, cities); 
+      
+    //const decoratorP = new DecoratorHtmlP(component, cities); 
+    //decoratorP.executar(); 
+    //decoratorP.extra();
+    //let htmlP = decoratorP.end();
 
-    for (let i = 0; i < cities.length; i++) {
-      html += `     <li>${cities[i]['Nome']}</li>\n`;
-    }
+    decoratorDiv.executar(); 
+    decoratorDiv.extra();
+    let htmlDiv = decoratorDiv.end();
 
-    html += `
-      </ul>
-    </body>
-  </html>`;
-
-    return html;
+      return htmlDiv;
   }
 
 }

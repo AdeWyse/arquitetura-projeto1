@@ -1,19 +1,26 @@
-class DecoratorHtmlDiv extends DecoratorBase {
-  constructor(comp) {
-    super(comp); // Call the constructor of the parent class
+import DecoratorBase from "./DecoratorBase.js";
+
+export default class DecoratorHtmlDiv extends DecoratorBase {
+  constructor(comp, cities) {
+    super(comp, cities); // Call the constructor of the parent class
   }
 
   executar() {
-    // Implementation of the executar method
+    super.executar();
+    this.extra();
+    
   }
 
   extra() {
-    // Implementation of the extra method
+    for (let i = 0; i < this.cities.length; i++) {
+      this.htmlRetornar += `     <li><div>${this.cities[i]['Nome']}</div></li>\n`;
+    }
+
+  }
+
+  end(){
+   super.end();
+    return this.htmlRetornar;
   }
 }
 
-// Usage:
-const component = new ComponenteConcreto(); // Create an instance of ComponenteConcreto
-const decorator = new DecoratorHtmlDiv(component); // Create an instance of DecoratorHtmlDiv with the ComponenteConcreto instance
-decorator.executar(); // Call the executar method on the decorator
-decorator.extra(); // Call the extra method on the decorator
