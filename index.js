@@ -18,9 +18,12 @@ const objectFormater = {
 const reporter = new CitiesReporter(objectFormater);
 
 const output = reporter.report(filename);
-
-
 console.log(output);
+
+
+//Adiciona nova cidade a base de dados utilizando _save()
+reporter.adicionarCidade();
+
 
 
 
